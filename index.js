@@ -29,15 +29,15 @@ app.post(URI, async (req, res) => {
     const text = req.body.message.text
 
     // send message
-     axios.post(`${TELEGRAM_API}/sendMessage`, { chat_id, text })
+    axios.post(`${TELEGRAM_API}/sendMessage`, { chat_id, text })
     res.send('hi')
 })
 
 app.get('/', (req, res) => {
     res.send('hello')
 })
-
-app.listen(3000, async () => {
+const { Port } = process.env
+app.listen(Port | 3000, async () => {
     console.log('app is running')
 
     await initBot()
