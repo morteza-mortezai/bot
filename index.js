@@ -5,7 +5,7 @@ const axios = require('axios')
 const app = express()
 app.use(express.json())
 
-const { TOKEN, SERVER_URL } = process.env
+const { TOKEN, SERVER_URL ,PORT} = process.env
 const TELEGRAM_API = `https://api.telegram.org/bot${TOKEN}`
 const URI = `/webhook/${TOKEN}`
 const WEBHOOK_URL = SERVER_URL + URI
@@ -36,8 +36,8 @@ app.post(URI, async (req, res) => {
 app.get('/', (req, res) => {
     res.send('hello')
 })
-const { Port } = process.env
-app.listen(Port | 3000, async () => {
+
+app.listen(PORT || 6108, async () => {
     console.log('app is running')
 
     await initBot()
